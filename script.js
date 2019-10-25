@@ -19,7 +19,7 @@ $.ajax({
 
 
     });
-
+//get places by location 
 
 var data = null;
 var xhr = new XMLHttpRequest();
@@ -32,6 +32,22 @@ xhr.addEventListener("readystatechange", function () {
     }
 });
 xhr.send(data);
+
+//get places by keyword
+
+var dataKeyword = null;
+var xhrKeyword = new XMLHttpRequest();
+
+xhrKeyword.open("GET", "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=food");
+xhrKeyword.setRequestHeader("Authorization", "Bearer 1BeBj-4omHzaOR1JLPwH5DG5o3hVEsXNwnynnclWHxfKwNztWHnnV8ti4WOk3vArHSyRIRKOxLD93LCoVuCG08tb2UJR3Bved1WHYnWxwLVsGDObDgt6it2Zr2uyXXYx");
+
+xhrKeyword.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+        data = JSON.parse(this.responseText);
+        console.log(dataKeyword);
+    }
+});
+xhrKeyword.send(dataKeyword);
 
 
 
