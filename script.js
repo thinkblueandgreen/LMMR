@@ -23,7 +23,7 @@ $.ajax({
 
 var data = null;
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?text=coffee&latitude=37.786882&longitude=-122.399972");
+xhr.open("GET", "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=92124"); //note location = 92124
 xhr.setRequestHeader("Authorization", "Bearer 1BeBj-4omHzaOR1JLPwH5DG5o3hVEsXNwnynnclWHxfKwNztWHnnV8ti4WOk3vArHSyRIRKOxLD93LCoVuCG08tb2UJR3Bved1WHYnWxwLVsGDObDgt6it2Zr2uyXXYx");
 xhr.addEventListener("readystatechange", function () {
     if (this.readyState === 4) {
