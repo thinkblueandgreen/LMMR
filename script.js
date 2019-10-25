@@ -9,6 +9,13 @@
   
       .then(function (response) {
           console.log(response); 
+
+          var events = response._embedded.events; 
+          events.forEach(element => {
+
+            console.log(element.name); 
+              
+          });
           
 
       });
