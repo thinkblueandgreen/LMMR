@@ -1,0 +1,16 @@
+.nav-wrapper {
+    background-color: #292e33;
+}
+
+.userInput {
+    display: flex;
+    justify-content: center;
+}
+
+.submitBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #292e33;
+}
