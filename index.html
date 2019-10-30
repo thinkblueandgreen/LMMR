@@ -22,13 +22,58 @@
 
     <title>Sports & Events</title>
   </head>
-  <p>Rod's testing branch</p>
-  <p>change for Mathi</p>
-  <p>change for Rod</p>
-
   <body>
+    
+      <h1 class="text-center">
+          Game search and mapping
+      </h1>
+      <div class="container">
+          <div class="row">
+              <div class="card">
+                  <div class="card-header">
+                      <strong>
+                          Search Parameters
+                      </strong>
+                  </div>
+                  <div class="card-body">
+                      <form role="form">
+                          <div class="form-group">
+                              <label for="search">Enter game name:</label>
+                              <input type="text" class="form-control" id="search-term">
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <button type="submit" class="btn btn-primary" style="margin-left: 20px" id="run-search">
+                                      Search
+                                  </button>
+                              </div>
+                              <div class="col-md-6">
+                                  <button class="btn btn-primary" id="clear-all">
+                                      Clear
+                                  </button>
+                              </div>
+                          </div>
+                          <br>
+                      </form>
+                  </div>
+              </div>
+      
+      
+              <div class="col-md-8">
+                  <div class="card">
+                      <div class="card-header">
+                          <strong>Top events</strong>
+                      </div>
+                      <div class="card-body" id="searchDisplaySection">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      
+      
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="script.js"></script>
+    <script src="scriptTicketMaster.js"></script>
   </body>
 </html>
 
