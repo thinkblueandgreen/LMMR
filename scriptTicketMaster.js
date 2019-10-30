@@ -15,20 +15,28 @@ $("#run-search").on('click', function (event) {
         .then(function (response) {
             console.log(response);
 
-            for (i = 0; i < 5; i++) {
-                var gameName = response._embedded.events[i].name;
-                var location = response._embedded.events[i]._embedded.venues[0].name;
-                var address = response._embedded.events[i]._embedded.venues[0].address.line1;
-                var city = response._embedded.events[i]._embedded.venues[0].city.name;
-                var stateCode = response._embedded.events[i]._embedded.venues[0].state.stateCode;
-                var countryName = response._embedded.events[i]._embedded.venues[0].country.name;
-                var dateOfEvent = response._embedded.events[i].dates.start.localDate;
-                var timeofEvent = response._embedded.events[i].dates.start.localTime;
-        
-                var $logEachGameDetail = $("<div>");
-                $logEachGameDetail.append("<h4>" + gameName + "</h4>" + "Stadium : " + location + "<br>" + address + "<br>" + city + ", " + countryName + "<br>" + "Date : " + dateOfEvent + ", " + timeofEvent);
-                $("#searchDisplaySection").append($logEachGameDetail);
+            if (response.page.number === 0) {
+                console.log("team doesn't exist");
+                //need to display error on webpage
             }
-        // return response
+
+            else {
+
+                for (i = 0; i < 5; i++) {
+                    var gameName = response._embedded.events[i].name;
+                    var location = response._embedded.events[i]._embedded.venues[0].name;
+                    var address = response._embedded.events[i]._embedded.venues[0].address.line1;
+                    var city = response._embedded.events[i]._embedded.venues[0].city.name;
+                    var stateCode = response._embedded.events[i]._embedded.venues[0].state.stateCode;
+                    var countryName = response._embedded.events[i]._embedded.venues[0].country.name;
+                    var dateOfEvent = response._embedded.events[i].dates.start.localDate;
+                    var timeofEvent = response._embedded.events[i].dates.start.localTime;
+
+                    var $logEachGameDetail = $("<div>");
+                    $logEachGameDetail.append("<h4>" + gameName + "</h4>" + "Stadium : " + location + "<br>" + address + "<br>" + city + ", " + countryName + "<br>" + "Date : " + dateOfEvent + ", " + timeofEvent);
+                    $("#searchDisplaySection").append($logEachGameDetail);
+                }
+            }
+            // return response
         })
 })
