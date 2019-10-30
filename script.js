@@ -1,7 +1,4 @@
 
-
-
-
 var data = null;
 var xhr = new XMLHttpRequest();
 var zipCode = "92124"; 
