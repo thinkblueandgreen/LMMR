@@ -29,36 +29,23 @@ $("#run-search").on('click', function (event) {
 
                 var $logEachGameDetail = $("<div>");
                 var $searchBeer = $('<a>', {
-                    id: zipCode, 
+                    id: zipCode,
                     class: "beer waves-effect grey btn-small",
                     text: 'Beer?',
                 })
                 $logEachGameDetail.append("<h4>" + gameName + "</h4>" + "Stadium : " + location + "<br>" + address + "<br>" + city + ", " + countryName + "<br>" + "Date : " + dateOfEvent + ", " + timeofEvent);
-                $("#searchDisplaySection").append($logEachGameDetail);
-                $('#searchDisplaySection').append($searchBeer);
-
-                
-
-                //getBeer(zipCode); 
+                $("#eventsDisplaySection").append($logEachGameDetail);
+                $('#eventsDisplaySection').append($searchBeer);
             }
-            // now for the beer!
-
-
-        
-            
         })
 })
-
-$('#searchDisplaySection').on('click', ".beer", function(event){
-    console.log ("clicking beers"); 
+$('#eventsDisplaySection').on('click', ".beer", function (event) {
+    console.log("clicking beers");
     console.log(this);
-    console.log(this.id);  
+    console.log(this.id);
 
-    getBeer(this.id); 
+    getBeer(this.id);
 })
-
-
-
 function getBeer(zipCode) {
     var data = null;
     var xhr = new XMLHttpRequest();
@@ -73,10 +60,8 @@ function getBeer(zipCode) {
                 restaurant.categories.forEach(category => {
                     if (category.alias === 'bars') {
                         //logs the local bars to the console
-                        console.log(restaurant.name);
-
-
-
+                        console.log(restaurant);
+                        renderBeer(restaurant); 
                     };
                 });
 
@@ -84,4 +69,11 @@ function getBeer(zipCode) {
         }
     });
     xhr.send(data)
+}
+
+function renderBeer(bar) {
+    var beerDetail = $("<div>");
+    
+    beerDetail.append("<h4>" + bar.name + "</h4>");
+    $("#beersDisplaySection").append(beerDetail);
 }
