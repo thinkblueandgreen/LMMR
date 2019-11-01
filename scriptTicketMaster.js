@@ -57,7 +57,7 @@ $("#run-search").on('click', function (event) {
                                     //logs the local bars to the console
                                     console.log(restaurant.name); 
                                 };
-                         });       
+                        });       
                         
                     })
                 }
