@@ -25,18 +25,21 @@ $("#run-search").on('click', function (event) {
                 var dateOfEvent = response._embedded.events[i].dates.start.localDate;
                 var timeofEvent = response._embedded.events[i].dates.start.localTime;
 
+                var zipCode = response._embedded.events[i]._embedded.venues[0].postalCode;
+
                 var $logEachGameDetail = $("<div>");
                 var $searchBeer = $('<a>', {
+                    id: zipCode, 
                     class: "beer waves-effect grey btn-small",
-                    text: 'Beer?'
+                    text: 'Beer?',
                 })
                 $logEachGameDetail.append("<h4>" + gameName + "</h4>" + "Stadium : " + location + "<br>" + address + "<br>" + city + ", " + countryName + "<br>" + "Date : " + dateOfEvent + ", " + timeofEvent);
                 $("#searchDisplaySection").append($logEachGameDetail);
                 $('#searchDisplaySection').append($searchBeer);
 
-                var zipCode = response._embedded.events[i]._embedded.venues[0].postalCode;
+                
 
-                getBeer(zipCode); 
+                //getBeer(zipCode); 
             }
             // now for the beer!
 
@@ -48,6 +51,10 @@ $("#run-search").on('click', function (event) {
 
 $('#searchDisplaySection').on('click', ".beer", function(event){
     console.log ("clicking beers"); 
+    console.log(this);
+    console.log(this.id);  
+
+    getBeer(this.id); 
 })
 
 
