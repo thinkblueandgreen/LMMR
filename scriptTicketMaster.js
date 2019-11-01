@@ -27,8 +27,12 @@ $("#run-search").on('click', function (event) {
                 var timeofEvent = response._embedded.events[i].dates.start.localTime;
 
                 var $logEachGameDetail = $("<div>");
+                var $searchBeer = $('<a>', {
+                    class: "waves-effect grey btn-small",
+                    text: 'Beer?'})
                 $logEachGameDetail.append("<h4>" + gameName + "</h4>" + "Stadium : " + location + "<br>" + address + "<br>" + city + ", " + countryName + "<br>" + "Date : " + dateOfEvent + ", " + timeofEvent);
                 $("#searchDisplaySection").append($logEachGameDetail);
+                $('#searchDisplaySection').append($searchBeer);
 
 
                 var zipCode = response._embedded.events[i]._embedded.venues[0].postalCode;
