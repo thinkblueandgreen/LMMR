@@ -15,7 +15,7 @@ $("#run-search").on('click', function (event) {
 
             for (i = 0; i < 5; i++) {
                 var gameName = response._embedded.events[i].name;
-                
+
                 var location = response._embedded.events[i]._embedded.venues[0].name;
                 var address = response._embedded.events[i]._embedded.venues[0].address.line1;
                 var city = response._embedded.events[i]._embedded.venues[0].city.name;
@@ -39,7 +39,7 @@ $("#run-search").on('click', function (event) {
         })
     })
 
-                function findBar(zipCode){  
+function findBar(zipCode){  
                     var data = null;
                 var xhr = new XMLHttpRequest();      
 
@@ -60,7 +60,5 @@ $("#run-search").on('click', function (event) {
                         })
                     }
                     });
-                    xhr.send(data);
-                }
-
-
+                    xhr.send(data)
+}
