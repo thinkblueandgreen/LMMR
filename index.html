@@ -17,15 +17,19 @@
         <nav>
             <!-- navigation bar, we have used bootstrap and materialize -->
             <div class="nav-wrapper">
+<<<<<<< HEAD
                     <div class="brand-logo center">Beers and Events</div>
+=======
+                    <div class="brand-logo center">Beers and Events</div>         
+>>>>>>> 4fa805f0baa7e376aa4d899859b129017d443d42
             </div>
         </nav>  
         
         <div class="row wholeCard">
             <div class="col s4 ">
                 <div class="card">
-                    <div class="card-image">
-                        <img src="css/Images/Padre-Beer.jpg">
+                    <div class="card-image sdPadres">
+                        <img src="css/Images/Padre-Beer.jpg" height="600">
                 </div>
                 <div class="card-content">
                         <!-- this is where the user will input the search -->
@@ -43,22 +47,38 @@
                             <button class="btn waves-effect grey" type="delete" name="action" id="clear-all">Clear Results<i class="material-icons right">delete</i></button>
                         </form>
                     </div>
+                    <!-- this is where results comes up for the games -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col m6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Top events</strong>
+                                    </div>
+                                    <div class="card-body" id="searchDisplaySection">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- this is where beer results should show -->
+                            <div class="col m6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Beers</strong>
+                                    </div>
+                                    <div class="card-body" id="searchDisplaySection">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        
+                    </div>
+
                 </div>
             </div>
         </div>   
-        <br>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        <strong>Top events</strong>
-                    </div>
-                    <div class="card-body" id="searchDisplaySection">
-                    </div>
-                </div>
-            </div>
-        </div>
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!-- took out script.js reference -->
     <script src="scriptTicketMaster.js"></script>
