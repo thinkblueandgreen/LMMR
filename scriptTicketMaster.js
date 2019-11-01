@@ -1,3 +1,4 @@
+
 // building ticketmaster URL
 function ticketMasterQueryURL() {
     var selectedGame = $("#search-term").val().trim();
@@ -24,41 +25,63 @@ $("#run-search").on('click', function (event) {
                 var dateOfEvent = response._embedded.events[i].dates.start.localDate;
                 var timeofEvent = response._embedded.events[i].dates.start.localTime;
 
+                var zipCode = response._embedded.events[i]._embedded.venues[0].postalCode;
+
                 var $logEachGameDetail = $("<div>");
                 var $searchBeer = $('<a>', {
-                    class: "waves-effect grey btn-small",
-                    text: 'Beer?'})
+                    id: zipCode, 
+                    class: "beer waves-effect grey btn-small",
+                    text: 'Beer?',
+                })
                 $logEachGameDetail.append("<h4>" + gameName + "</h4>" + "Stadium : " + location + "<br>" + address + "<br>" + city + ", " + countryName + "<br>" + "Date : " + dateOfEvent + ", " + timeofEvent);
                 $("#searchDisplaySection").append($logEachGameDetail);
                 $('#searchDisplaySection').append($searchBeer);
 
-                var zipCode = response._embedded.events[i]._embedded.venues[0].postalCode;  
+                
+
+                //getBeer(zipCode); 
             }
             // now for the beer!
-            $searchBeer.on('click', findBar(zipCode));
+
+
+        
+            
         })
-    })
+})
 
-function findBar(zipCode){  
-                    var data = null;
-                var xhr = new XMLHttpRequest();      
+$('#searchDisplaySection').on('click', ".beer", function(event){
+    console.log ("clicking beers"); 
+    console.log(this);
+    console.log(this.id);  
 
-                    xhr.open("GET", "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + zipCode);
-                    xhr.setRequestHeader("Authorization", "Bearer 1BeBj-4omHzaOR1JLPwH5DG5o3hVEsXNwnynnclWHxfKwNztWHnnV8ti4WOk3vArHSyRIRKOxLD93LCoVuCG08tb2UJR3Bved1WHYnWxwLVsGDObDgt6it2Zr2uyXXYx");
-                    xhr.addEventListener("readystatechange", function () {
-                        if (this.readyState === 4) {
-                            data = JSON.parse(this.responseText);
-                            console.log(data);
-                            data.businesses.forEach(restaurant => {              
-                                restaurant.categories.forEach(category => {
-                                    if (category.alias === 'bars'){
-                                        //logs the local bars to the console
-                                        console.log(restaurant.name); 
-                                    };
-                            });       
-                            
-                        })
-                    }
-                    });
-                    xhr.send(data)
+    getBeer(this.id); 
+})
+
+
+
+function getBeer(zipCode) {
+    var data = null;
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + zipCode);
+    xhr.setRequestHeader("Authorization", "Bearer 1BeBj-4omHzaOR1JLPwH5DG5o3hVEsXNwnynnclWHxfKwNztWHnnV8ti4WOk3vArHSyRIRKOxLD93LCoVuCG08tb2UJR3Bved1WHYnWxwLVsGDObDgt6it2Zr2uyXXYx");
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            data = JSON.parse(this.responseText);
+            console.log(data);
+            data.businesses.forEach(restaurant => {
+                restaurant.categories.forEach(category => {
+                    if (category.alias === 'bars') {
+                        //logs the local bars to the console
+                        console.log(restaurant.name);
+
+
+
+                    };
+                });
+
+            })
+        }
+    });
+    xhr.send(data)
 }
