@@ -39,10 +39,11 @@ $("#run-search").on('click', function (event) {
             }
         })
 })
+
 $('#eventsDisplaySection').on('click', ".beer", function (event) {
-    console.log("clicking beers");
+    //console.log("clicking beers");
     console.log(this);
-    console.log(this.id);
+    //console.log(this.id);
 
     getBeer(this.id);
 })
@@ -55,12 +56,12 @@ function getBeer(zipCode) {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             data = JSON.parse(this.responseText);
-            console.log(data);
+            //console.log(data);
             data.businesses.forEach(restaurant => {
                 restaurant.categories.forEach(category => {
                     if (category.alias === 'bars') {
                         //logs the local bars to the console
-                        console.log(restaurant);
+                        //console.log(restaurant);
                         renderBeer(restaurant); 
                     };
                 });
@@ -74,6 +75,6 @@ function getBeer(zipCode) {
 function renderBeer(bar) {
     var beerDetail = $("<div>");
     
-    beerDetail.append("<h4>" + bar.name + "</h4>");
+    beerDetail.append("<h4>" + bar.name + "</h4>" + "<br>" + bar.location.display_address + "</br");
     $("#beersDisplaySection").append(beerDetail);
 }
