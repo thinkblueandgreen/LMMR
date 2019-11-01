@@ -17,7 +17,7 @@ $("#run-search").on('click', function (event) {
 
             for (i = 0; i < 5; i++) {
                 var gameName = response._embedded.events[i].name;
-                
+
                 var location = response._embedded.events[i]._embedded.venues[0].name;
                 var address = response._embedded.events[i]._embedded.venues[0].address.line1;
                 var city = response._embedded.events[i]._embedded.venues[0].city.name;
@@ -45,21 +45,21 @@ $("#run-search").on('click', function (event) {
                         data = JSON.parse(this.responseText);
                         console.log(data);
 
-                        
 
-                        data.businesses.forEach(restaurant => {              
+
+                        data.businesses.forEach(restaurant => {
                             restaurant.categories.forEach(category => {
-                                if (category.alias === 'bars'){
+                                if (category.alias === 'bars') {
                                     //logs the local bars to the console
-                                    console.log(restaurant.name); 
+                                    console.log(restaurant.name);
                                 };
-                         });       
-                        
-                    })
-                }
-                });
-    xhr.send(data);
+                            });
 
-}
+                        })
+                    }
+                });
+                xhr.send(data);
+
+            }
         })
 })
